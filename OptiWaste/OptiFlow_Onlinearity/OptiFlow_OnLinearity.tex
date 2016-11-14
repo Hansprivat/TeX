@@ -1,0 +1,285 @@
+
+\documentclass[twoside,10pt]{article}
+
+%% Seriøse TODOs: søg "from/to" .
+%% Andre YODOs:
+%% Money: der er ingen OMONEY eller lignende
+%%
+
+\usepackage{makeidx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeindex
+ % se \input{OptiWaste.ind}  ved slutningen af filen, og husk at kÃ¸re MakeIndex i WinEdt/TeX
+ % Se her: \index{cheese!gouda} \index{cheese!emmentahl} \index{cheese!smoreost}
+ %         \index{cheese!gouda!brieC}\index{cheese!gouda!brieA} \index{cheese!gouda!brieB}
+ % Dette giver subindex, tre niveauer (som vist) er mulige:
+ %
+
+% PACKAGES: Brug MikTex Package Manager (åbnes fra Programmer ...)
+\usepackage{graphicx}
+% Bounding Box: bl.a.:  Start, e.g. with bb=0 0 100 100 and see what you get, then try increasing or decreasing the numbers.
+% They are, in turn: lower-left-x (llx), lower-left-y (lly), upper-right-x (urx), and upper-right-y (ury).
+% The width of the picture is urx-llx and the height is ury-lly.
+\usepackage{rotating} % search "sidewaystable"
+\usepackage{psfrag}
+\usepackage{epsfig}
+\usepackage{soul}
+\usepackage{lscape}    % search "landscape"
+\usepackage{pdflscape} % forskel fr ovenstÃ¥edne?
+\usepackage{longtable} % search "longtable"
+%\usepackage{anyfontsize}
+\usepackage[official]{eurosym} % euro
+
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb,latexsym}  %$\thicksim$,  %$\backsim$,  %$\thickapprox med mere$,
+
+
+%  YAP: The default render method can be chosen on the Display property page (Section 1.2, “Display Property Page”). Vælg Dvips.
+% Ikke nok!: Næste frslag
+%It seems that you use PostScript (PSTricks) in your code, which requires a PostScript viewer or converter. DVI viewers might implement a subset of PostScript but their job is still DVI.
+%I would view the output using a PostScript capable viewers such as gs, or if PDF would be the final output, then a PDF viewer. It's no problem for modern editors to set the compilation routine to compile to DVI, convert to PS, convert to PDF and to open the PDF.
+
+
+
+ \setlength{\textheight}{240mm}
+ % nÃ¦ste Ã¸get fra oprindelige 125mm
+ \setlength{\textwidth}{145mm}
+ \setlength{\oddsidemargin}{15mm}
+ \setlength{\evensidemargin}{15mm}
+ \setlength{\topmargin}{-15mm}
+ \setlength{\parindent}{0cm}
+ \setlength{\parskip}{2mm}
+
+
+
+\newcommand{\ow}{OptiFlow}
+\newcommand{\OWVersionname}{0.99, April 2016 }
+
+\newcommand{\fl}{Flow }
+\newcommand{\fldot}{Flow. }
+\newcommand{\fls}{Flows }
+\newcommand{\flsdot}{Flows. }
+\newcommand{\flcomma}{Flow, }
+\newcommand{\flscomma}{Flows, }
+\newcommand{\Fl}{FLOW }
+\newcommand{\Fldot}{FLOW. }
+
+%\newcommand{\prX}{Proc}
+\newcommand{\pr}{Proc }
+\newcommand{\prdot}{Proc. }
+\newcommand{\prcomma}{Proc, }
+\newcommand{\prs}{Processes }
+\newcommand{\prsdot}{Processes. }
+%\newcommand{\Pr}{PROC }
+
+\newcommand{\qual}{Quality }
+\newcommand{\quals}{Qualities }
+\newcommand{\qualdot}{Quality. }
+\newcommand{\qualsdot}{Qualities. }
+
+\newcommand{\ttime}{Term}
+
+%==========================================================================================
+\begin{document}
+
+
+%==========================================================================================
+\section*{{\large Hans Ravn}}
+
+
+
+\section*{{\LARGE On Linearity in  {\ow } }}
+
+
+\subsubsection*{PRELIMINARY - DO NOT QUOTE OR FORWARD}
+
+\subsubsection*{This document revised 2016.11.11}
+
+
+% --------------------------------------------------------------------------------------------------------------------
+%\section{Introduction}
+%\label{S-introduction} \index{OptiWaste}\index{TopWaste}  % \index{\ow} dette virker ikke!
+
+\subsubsection*{Summary}
+
+Here is the hypothesis:  "A problem that has a network topology [to be defined], and that may be formulated as an LP problem may also be formulated as a generalized network model."
+
+\subsubsection*{Argumentation}
+
+Originally {\ow} was developed in the context of solid waste handling, and was then called OptiWaste. Due to the generality of the formulation of that model it may have applications outside the waste handling sector, therefore it was renamed to {\ow}.
+
+{\ow } is formulated as a generalized network model. As it is formulated fairly general it is of value to investigate the range of applications of the model, this is the aim of the present document.
+More specifically, possible limitations to the modelling will be discussed in relation to a  traditional linear programming modelling.
+
+This approach is motivated by two observations. First, because linear programming (LP in the following) is well understood and widely applied, so it serves as a good framework of reference.
+Second, because it has been questioned whether a generalized network model may handle the same range of problems as an LP model can
+ (James W. Levis, Morton A. Barliz, Joseph F. DeCarolis, S. Ranji Ranjithan: A generalized multistage modeling framework for life cycle assessment-based integrated solid waste management, Environmental Modelling \& Software 50 (2013) 51-65).
+
+As an illustration, consider the constraint matrix $A$  of an LP problem formulation, associated with a general formulation of a LP problem
+\begin{eqnarray}
+ \max c'x \\
+ Ax = b
+\end{eqnarray}
+Lower and/or upper bounds on individual variables are added according to conventions and needs.
+
+The matrix $A$ may for instance be as illustrated  in Table \ref{T-LPformulation}. The matrix may represent ....
+
+Note that although the matrix in Table \ref{T-LPformulation} has only coefficients 1, -1 and 0, this is not the case in general.
+
+TODO: Comments on the  objective function - it is not needed for the discussion...
+
+
+Now consider a reformulation of the LP in the direction of a generalized network model, the constraint matrix of this is illustrated in Table \ref{T-Networkformulation}.
+The correspondence between the two formulations should be somewhat observable.
+
+In particular note that the formulation in Table \ref{T-Networkformulation} does not apply all of the same variables as shown in Table \ref{T-LPformulation}, for instance, variable $v2$.
+Thus, variable $v1$ in Table \ref{T-Networkformulation} represents two variable, $v1$ and $v2$. This is possible because values of $v1$ and $v2$ in Table \ref{T-LPformulation} are in proportions $b1/b2$,
+and values for the pairs $v3$ and $v4$, $v5$ and $v6$,  $v7$ and $v8$,  $v3$ and $v10$ are also proportional with the same value $b1/b2$, this follows from  equations $q1 - q6$ in Table \ref{T-LPformulation}.
+The same holds true for other pairs of variables in Table \ref{T-LPformulation}.
+
+In the other hand, the formulation in Table \ref{T-Networkformulation} applies some variables and equations that are not present in Table \ref{T-LPformulation}.
+They are introduced in order to maintain linearity. The main construction is application of a Transform process (in the {\ow} terminology), shown as equations $q20 - q23$ in Table \ref{T-Networkformulation}.
+Some of the variables related to those processes are new, viz. $v51 - v52$ and $v131 - v132$.  [Note that this is discussed on the OptiWaste documentation, version 0.95, Section 2.3]
+
+Another difference is that some of the coefficients in corresponding places in the two matrixes differ. This is explained by the additional Transform processes in Table \ref{T-Networkformulation}.
+The values of the coefficients may be derived from the corresponding values related to the formulation in Table \ref{T-LPformulation}, taking into account also the units applied in the two formulations.
+
+As an example consider Source2. The LP formulation ... $b11 - b12$  ...  [Here I derive $a_{22}^{131}$ and $a_{23}^{132}$]
+
+
+So as seen [after further argumentation .... to come], a generalized network model may be formulated to represent the same problem as modelled as LP in Table \ref{T-LPformulation}.
+
+Here is the statement we want to arrive at:  "A problem that has a network topology [to be defined], and that may be formulated as an LP problem may also be formulated as a generalized network model."
+
+
+
+
+
+\begin{tiny}
+\begin{landscape}  % package lscape
+%\begin{longtable}{|l|l|l|l|l|l|}
+%\begin{table}
+%\tiny
+%\begin{center}
+%\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+%    &v1&v2&v3&v4&v5 &v6 &v7&v8&v9&v10 &v11&v12&v13&v14&v15 &v16&v17&v18&v19&v20 &v21&v22&v23&v24&v25 &v26&v27&v28&  \\  %
+    &v &v &v &v &v  &v  &v &v &v &v   &v  &v  &v  &v  &v   &v  &v  &v  &v  &v   &v  &v  &v  &v  &v   &v  &v  &v  &   \\  %
+    &1&2&3&4&5 &6 &7&8&9&10 &11&12&13&14&15 &16&17&18&19&20 &21&22&23&24&25 &26&27&28&  \\  %
+\hline
+q1  & 1&  &-1&  &   &   &  &  &  &    &   &   &   &   &    &   &   &   &   &    &   &   &   &   &    &   &   &   & Source1 \\
+q2  &  & 1&  &-1&   &   &  &  &  &    &   &   &   &   &    &   &   &   &   &    &   &   &   &   &    &   &   &   & Source1 \\
+\hline
+q3  &  &  & 1&  & -1&   &-1&  &  &    &   &   &   &   &    &   &   &   &   &    &   &   &   &   &    &   &   &   & VSplit  \\
+q4  & &  &  &  1&   & -1&  &-1&  &    &   &   &   &   &    &   &   &   &   &    &   &   &   &   &   &    &   &   & VSplit  \\
+\hline
+q5  & &  &  &   &   &  & 1&  &-1&     &   &   &   &   &    &   &   &   &   &   &    &   &   &   &   &    &   &   & Sink1   \\
+q6  & &  &  &   &   &  &  & 1&  &-1   &   &   &   &   &    &   &   &   &   &   &    &   &   &   &   &    &   &   & Sink1   \\
+\hline
+q7  & &  &  &   &   &  &  &  &  &     & 1 &   & -1&   &    &   &   &   &   &   &    &   &   &   &   &    &   &   & Source2 \\
+q8  & &  &  &   &   &  &  &  &  &     &   &  1&   &-1 &    &   &   &   &   &   &    &   &   &   &   &    &   &   & Source2 \\
+\hline
+q9  & &  &  &   &   &  &  &  &  &     &   &   &   &   &    1&   &   & -1&   &   &   &   &   &   &   &    &   &   & Source3  \\
+q10 & &  &  &   &   &  &  &  &  &     &   &   &   &   &    &   1&   &   & -1&   &   &   &   &   &   &    &   &   & Source3  \\
+q11 & &  &  &   &   &  &  &  &  &     &   &   &   &   &    &    &  1&   &   & -1&   &   &   &   &   &    &   &   & Source3  \\
+\hline
+q12 & &  &  &   &   &  &  &  &  &     &   &   &   &   &    &    &   &  1&   &   & -1&   &   &   &   &    &   &   & Transf4  \\
+q13 & &  &  &   &   &  &  &  &  &     &   &   &   &   &    &    &   &   &  1&   &   & -1&   &   &   &    &   &   & Transf4  \\
+q14 & &  &  &   &   &  &  &  &  &     &   &   &   &   &    &    &   &   &   &  1&   &   & -1&   &   &    &   &   & Transf4  \\
+\hline
+q15 & &  &  &   &   &  &  &  &  &     &   &   &   &  &     &    &   &   &   &   &   &   &  1& -1&   &    &   &   & Sink4    \\
+\hline
+q16 & &  &  &   &1  &  &  &  &  &     &   &   &  1&  &     &    &   &   &   &   &  1&   &   &   & -1&    &   &   & VJoin1   \\
+\hline
+q17 & &  &  &   &   &1 &  &  &  &     &   &   &   & 1&     &    &   &   &   &   &   &  1&   &   &   &-1  &   &   & VJoin2   \\
+\hline
+q18 & &  &  &   &   &  &  &  &  &     &   &   &   &  &     &    &   &   &   &   &   &   &   &   &  1&    & -1&   & Sink2    \\
+\hline
+q19 & &  &  &   &   &  &  &  &  &     &   &   &   &  &     &    &   &   &   &   &   &   &   &   &   &   1&   & -1& Sink3    \\
+\hline % ny
+%\end{tabular}
+%\end{center}
+\caption{LP formulation of the situation illustrated in Figure ... The table shown is the constraint matrix.
+Variables $v1 - v28$ are shown as columns, equations $q1 - q19$ are shown as rows.
+Variables are assumed positive (i.e., non-negative) (NB: SINKS?), equations are all of the equality type, and all right hand sides are 0.
+Variables $v1 - v2$, $v11 - v12$ and $v16- v18$  are fixed at non-negative values $b1 - b2$, $b11 - b12$ and $b16 - b18$ respectively (UPS: Notation?).
+By convention flow entering (NB: men vi har jo ikke 'FLOW' ...   }
+\label{T-LPformulation}
+%\end{table}
+\end{longtable}%ny
+\end{landscape}
+\end{tiny}%ny
+
+
+
+
+
+
+
+
+\begin{tiny}
+\begin{landscape}  % package lscape
+%\begin{longtable}{|l|l|l|l|l|l|}
+%\begin{table}
+%\tiny
+%\begin{center}
+%\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+%    &v1&v2&v3&v4&v5 &v6 &v7&v8&v9&v10 &v11&v12&v13&v14&v15 &v16&v17&v18&v19&v20 &v21&v22&v23&v24&v25 &v26&v27&v28&  \\  %
+%    &v  &v &v &v  &v  &v &v &v &v   &v  &v  &v  &v  &v   &v  &v  &v  &v  &v   &v  &v   &      \\  %
+%     & 1&3 &5   &7 &9  &11 &13 &15  &18 &21 &22 &23 &24 &25 &26 &27 &28 & 51 & 52 & 131 & 132 & \\  %
+     &v1&v3&v5  &v7&v9 &v11&v13&v15 &v18&            v21&            v22&            v23&v24&v25&v26&v27&v28&            v51&            v52&            v131&            v132&\\%
+\hline
+q1   & 1&-1&    &  &   &   &   &    &   &               &               &               &   &   &   &   &   &               &               &                &                &   Source1  \\
+\hline
+q3   &  & 1& -1 &-1&   &   &   &    &   &               &               &               &   &   &   &   &   &               &               &                &                &   VSplit   \\
+\hline
+q5   &  &   &   & 1&-1 &   &   &    &   &               &               &               &   &   &   &   &   &               &               &                &                &   Sink1    \\
+\hline
+q7   &  &   &   &  &   & 1 & -1&    &   &               &               &               &   &   &   &   &   &               &               &                &                &   Source2  \\
+\hline
+q9   &  &   &   &  &   &   &   &   1& -1&               &               &               &   &   &   &   &   &               &               &                &                &   Source3  \\
+\hline
+q12  &  &   &   &  &   &   &   &   1&   & -$a_{12}^{21}$&               &               &   &   &   &   &   &               &               &                &                &   Transf4  \\
+q13  &  &   &   &  &   &   &   &   1&  1&               & -$a_{13}^{22}$&               &   &   &   &   &   &               &               &                &                &   Transf4  \\
+q14  &  &   &   &  &   &   &   &   1&  1&               &               & -$a_{14}^{23}$&   &   &   &   &   &               &               &                &                &   Transf4  \\
+\hline
+q15  &  &   &   &  &   &   &   &    &   &               &               &              1& -1&   &   &   &   &               &               &                &                &   Sink4    \\
+\hline
+q16  &  &   &   &  &   &   &   &    &   &              1&               &               &   & -1&   &   &   &              1&               &               1&                &   VJoin1   \\
+\hline
+q17  &  &   &   &  &   &   &   &    &   &               &              1&               &   &   &-1 &   &   &               &              1&                &               1&   VJoin2   \\
+\hline
+q18  &  &   &   &  &   &   &   &    &   &               &               &               &   &  1&   & -1&   &               &               &                &                &   Sink2    \\
+\hline
+q19  &  &   &   &  &   &   &   &    &   &               &               &               &   &   &  1&   & -1&               &               &                &                &   Sink3    \\
+\hline
+q20  &  &   &  1&  &   &   &   &    &   &               &               &               &   &   &   &   &   & -$a_{20}^{51}$&               &                &                &   Transf1  \\
+q21  &  &   &  1&  &   &   &   &    &   &               &               &               &   &   &   &   &   &               & -$a_{21}^{52}$&                &                &   Transf1  \\
+\hline
+q22  &  &   &   &  &   &   &  1&    &   &               &               &               &   &   &   &   &   &               &               & -$a_{22}^{131}$&                &   Transf2  \\
+q23  &  &   &   &  &   &   &  1&    &   &               &               &               &   &   &   &   &   &               &               &                & -$a_{23}^{132}$&   Transf2  \\
+\hline
+%\end{tabular}
+%\end{center}
+\caption{Network formulation of the LP from Table \ref{T-LPformulation}. The network is illustrated in Figure ...
+To highlight the correspondence between the two formulations, as many as possible of the names of variables and equations are reused here. }
+\label{T-Networkformulation}
+%\end{table}
+\end{longtable}%ny
+\end{landscape}
+\end{tiny}%ny
+
+
+
+
+
+
+\end{document}
+
+
+
+

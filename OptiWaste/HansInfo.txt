@@ -1,0 +1,5 @@
+Folderen Optiwaste-Sardinia: 
+
+Der er noget tex-code i OptiWaste SardiniaEquation.tex (næppe identisk). 
+Pointen i at gemme er, at der her er en form for dokumentation af tex-to-word. 
+(Som ikke var ubetinget positiv, hvilket vel må tilskrives det anvendte software.)
