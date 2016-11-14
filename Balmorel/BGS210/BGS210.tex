@@ -1,0 +1,590 @@
+
+\documentclass[twoside,10pt]{article}
+% \makeindex
+
+%\newcommand{\gmssec}{the BALMOREL.GMS file section [...]}
+%\newcommand{\MONEY}{Money}
+%\newcommand{\checks}{The input is checket for reasonable values. See file errors.inc.}
+%\newcommand{\inputdata}{Comment on input data: }
+%\newcommand{\naming}{Comment on naming conventions: }
+\newcommand{\BMS}{'The Balmorel Model Structure' }
+\newcommand{\Versionname}{2.10 Alpha (October 2002) }
+\newcommand{\VersionGAMS}{2.25}
+% DER HENVISES TIL OG KOPIERES FLITTIGT FRA BMS. DERFOR SKAL DER VÆRE KONSISTENS!
+% DETTE GØRES I HÅNDEN!!!!
+% alle sådanne steder er markeret med !!!ZZZ!!!, søg på dette
+
+% DER KOPIERES FØLGENDE FRA bms:
+% NOGET fra introduction om Balmorel generelt
+
+
+% DER HENVISES TIL FØLGENDE I bms:
+% Afsnittet om filstrukter
+
+
+% DER SKAL VÆRE KONSISTENS med mbs PÅ FØLGENDE punkter :
+% henvisning til versionsnummer
+
+
+
+
+\usepackage{graphicx}
+
+
+ \setlength{\textheight}{240mm}
+ \setlength{\textwidth}{125mm}
+ \setlength{\oddsidemargin}{0mm}
+ \setlength{\evensidemargin}{30mm}
+\setlength{\topmargin}{-15mm}
+
+
+\begin{document}
+
+
+%\section*{The Balmorel Model Structure}
+
+
+%\newpage
+
+
+\section*{{\large Hans F. Ravn}}
+
+\vspace{5cm}
+%\section*{}\section*{}\section*{}
+
+\section*{{\LARGE Balmorel: Getting Started}}
+
+\section*{}\section*{}\section*{}
+
+
+
+\vspace{12cm}
+ %!!!ZZZ!!!
+
+\subsubsection*{To be used with Balmorel Version \Versionname}
+\subsubsection*{This document revised 2002.10.23}
+
+%{\tiny Filename: b\_strdoc.tex  Author: Hans F. Ravn  Date:
+%2001.02.26 }
+%\setcounter{page}{??}
+
+\newpage
+
+%{\tiny .}
+%\newpage
+
+
+
+
+\tableofcontents
+
+\newpage
+
+%{\tiny .}
+%\newpage
+
+\section{Introduction}
+\label{BGS-S-Introduction}
+
+This paper  describes how to get started using the Balmorel model.
+%!!!ZZZ!!! starter her:
+ %!!!ZZZ!!!
+The  document is part of a series that together documents the
+Balmorel model:
+\begin{itemize}
+  \item[] Balmorel: A  Model for Analyses of the Electricity and
+  CHP Markets in the Baltic Sea Region (Main Report)
+  \item[]The Balmorel Model: Theoretical Background
+  \item[]The Balmorel Model Structure
+  \item[]Balmorel: Data and Calibration
+  \item[]Balmorel: Getting  Started (this document)
+ % \item[]Balmorel: Observations on modelling and results
+\end{itemize}
+
+These  documents and further information may be found at the
+Balmorel homepage\index{homepage, Balmorel}: www.Balmorel.com.
+
+\subsection{This version}
+
+ %!!!ZZZ!!!
+The description given here is for  version \Versionname of the
+model.
+
+ %!!!ZZZ!!!
+ It is intended for use with the document  \BMS  for the same
+version, so please get that document from the Balmorel homepage.
+
+
+
+
+\section{Getting the Model}
+ %!!!ZZZ!!!
+The model may be downloaded from the homepage www.Balmorel.com.
+There may be different versions, make sure that you take the
+latest version and in particular that there is consistency between
+the model version and the documentation version.
+
+The model comes in a zipped version. Unzip it and place it in a
+convenient directory on your computer.
+
+ %!!!ZZZ!!!
+Now the file structure described in
+ %!!!ZZZ!!!  % \ref{DOC-SS-GAMS-intro}.
+ \BMS  should appear,
+please consult that document and verify that the necessary files
+are present and properly located.
+
+The model is written in the GAMS modeling language, see Section
+\ref{BGS-S-GAMS}.
+
+
+
+\section{The GAMS Modeling System}
+\label{BGS-S-GAMS} GAMS is the acronym for General Algebraic
+Modeling System. The system is suitable for formulation,
+documentation and solution of large  mathematical models.
+
+The user must have  GAMS installed at the computer, and it is
+assumed that the reader is sufficiently familiar with the GAMS
+language and the operation of the GAMS system. Conditions for
+acquiring GAMS, a User's Guide,
+ %\index{User's Guide} \index{GAMS User's Guide}
+  a Tutorial,
+and other relevant information about the GAMS modeling system may
+be found at GAMS homepage  www.gams.com.
+ % \index{homepage, GAMS}
+
+Version  \Versionname of the Balmorel model     may be used with
+GAMS  version \VersionGAMS { }     or later.
+
+\BMS contains a short description of GAMS. If you are not
+familiar with GAMS you may  find a tutorial and  other relevant
+introductory  material at the GAMS homepage.
+ %!!!ZZZ!!!
+% the tutorial by JHU ...
+ %!!!ZZZ!!!
+
+
+The basic GAMS system is file-oriented, and  any word processor
+or editor that operates on text files may be used.
+
+User interface facilities using Excel is under development for
+the Balmorel model, however it is not necessary to use this.
+
+
+
+\section{The Solver}
+
+In order to use the model, a solver is required. The Balmorel
+model is a linear model and therefore a linear programming solver
+is required. The solver must have an interface with the GAMS
+system, see the GAMS User's Guide and the GAMS homepage
+www.gams.com.
+
+\section{The Computer}
+
+The GAMS system including solvers with interface to GAMS may be
+used on a wide variety of computers. Consult www.gams.com.
+
+The time needed to run the model will depend on the model, the
+solver and the computer. The model, in particular its size, may
+to some extent be chosen according to circumstances, however, you
+will probably soon like to run a large model, and therefore you
+will also want a powerful computer.
+
+The standard user interface operates on text files, so an editor
+to handle this is necessary.  User interface facilities using
+Excel is under development. It is not necessary to use it,  if
+you want to, you must have Excel of course.
+
+
+
+
+\section{Running the Model}
+\label{BGS-S-Running(text)}
+
+Once the model, the GAMS system and the solver are installed on
+your computer  it should be possible to run the model.
+
+There are various ways to operate the GAMS system, cf.
+www.gams.com,   use any.
+
+In the following it will be assumed that you can run the installed
+model, and that you can do so without getting any error messages.
+
+The description in this section is aimed at working  with the
+text files. In Section \ref{BGS-S-Excel} the Excel files will be
+described.
+
+
+The model comes in a small version where e.g.  only one country,
+one year and one time segment per year are represented, where
+limited information is printed out, and otherwise.  In Section
+\ref{BGS-SS-Fullmodel} it will be described how to extend the
+model and the output to full capabilities.
+
+\subsection{First Experiments}
+
+
+\subsubsection{The output}
+%\label{BGS-SS-Outputfiles)}
+
+In \BMS  you may find a general description of the output
+produced by a successful run of the Balmorel model. In particular
+note the distinction between the output automatically generated
+by GAMS and the output originating specifically from the Balmorel
+model. In the sequel only the latter type will be dealt with.
+
+
+\subsubsection{Log and Error files}
+\label{BGS-SS-LogandErrorfiles}
+
+ Run the model. It is assumed that
+this occurs without any problems being reported by the GAMS
+system.
+
+However, this does not necessarily mean that the output from the
+model was meaningful or as expected. Therefore the Balmorel model
+comes with additional features that serves to identify if the
+input, the model and the solution were reasonable.
+
+Open the file Log.dat in the directory LogError. Here you will
+find an indication if suspicious things were discovered. If this
+is the case, the contents of the file  will instruct you on how
+find more details. Observe that the mentioned file may not be
+updated if the GAMS system reported errors, therefore always
+check the date and time in the file.
+
+Remember:
+\begin{itemize}
+\item After any model run which was somehow declared successful
+by GAMS, check the file Log.dat.
+\end{itemize}
+
+
+
+\subsubsection{Other output files}
+\label{BGS-SS-Outputfiles}
+
+Output describing the energy system results of a simulation will
+appear in various files in the directory printout.
+
+
+Open one file with the extension 'out' in the   directory Printout
+and study the contents. You may also study the contents of other
+files  with the extension 'out' in the same directory.
+
+See the description of the various output files in a document
+located in the Documentation directory.
+
+
+
+Observe that the output files are overwritten each time the model
+is run. Therefore you will have to move or rename the files after
+each run if you want to save them for later use.
+
+
+\subsubsection{The input}
+\label{BGS-SS-TheInput)}
+
+ In \BMS  you may find a  description of the
+file structure of the model, the input to the model, and where
+this is located in the different files.
+
+In the following you will be directed to make elementary changes
+in the input that is found in some of the files that are included
+into the main file Balmorel.gms.
+
+
+
+\subsubsection{Change demand}
+\label{BGS-SS-ChangeDemand}
+
+Open the file DE.INC in the directory Model. For the country and
+the year simulated (search one or more of the output files, cf.
+Section \ref{BGS-SS-Outputfiles}, to identify this) change the
+electricity demand in  one of the regions (see \BMS for the
+definition of region).  Rerun the model and study the
+consequences for the output in various files (Section
+\ref{BGS-SS-Outputfiles}).
+
+Remember  that the output files are overwritten each time the
+model is run, Section \ref{BGS-SS-Outputfiles}.
+
+
+
+You may similarly change heat demand in the file DH.INC for one
+heat area in  the country and year simulated  and study the
+consequences (see \BMS for the definition of area). Do not forget
+the advise given in Section \ref{BGS-SS-LogandErrorfiles}!
+
+You may experiment with other  changes of numerical input data
+found in e.g. GEOGR.INC or FUELP.INC.
+
+Make sure that after these experiments you reenter the original
+numerical values.
+
+Do not change anything in the file Balmorel.gms, and be very
+careful if you make changes  in SETS.INC!
+
+
+\subsection{Carrying On}
+
+
+\subsubsection{The inputout file}
+\label{BGS-SS-Inputout}
+
+ The file inputout.out in the directory
+Printout contains a summary of the input to the model that is
+simulated. The file is useful for getting an overview of the
+model and data, for error finding and otherwise.
+
+The simulated model need not represent all the countries and all
+the years that are indicated in the include files (eg. DE.INC, cf.
+Section \ref{BGS-SS-ChangeDemand}).
+ %!!!ZZZ!!!
+See also the description on the difference between data structure
+and simulation in \BMS .
+ %!!!ZZZ!!!
+
+
+The following section illustrates how the simulated model is
+specified, see also Section \ref{BGS-SS-Fullmodel}.
+
+
+
+
+
+\subsubsection{Countries}
+\label{BGS-S-C(CCC)}
+
+
+The countries in the data structure are specified in  SET CCC
+which is defined in the file SETS.INC. Open this file, find CCC
+and study the definition.
+
+The  countries in the simulation are specified in  SET C(CCC)
+(which is a subset of SET CCC), also in the file SETS.INC. Find
+C(CCC) and study the definition. Observe in particular that an
+asterix (*) in the first position of a line turns that line into
+a comment. Only one country from the set CCC is selected for
+inclusion in C(CCC), since all other countries have an asterix in
+the first position of the line.
+
+Include one more country. Run the model. Study the consequences
+(Section \ref{BGS-SS-Outputfiles}, Section \ref{BGS-SS-Inputout}).
+
+
+You end this section by redefining  SET C(CCC) to contain only
+one country (the  one originally included or any other).
+
+
+\subsubsection{The years}
+\label{BGS-S-Y(YYY)}
+
+The years in the data structure are given as SET YYY and the years
+simulated are given in SET Y(YYY), both located in the file
+SETS.INC.
+
+Find YYY and study the definition. Observe that a notation like
+"/1995*2030/" means that all years from 1995 to 2030 are
+included, and "/2000*2000/" hence means that only 2000 is
+selected. Find Y(YYY) and change it to contain two consecutive
+years, rerun the model and study the consequences.
+
+You end this section by redefining  SET Y(YYY) to contain only
+one  year.
+
+
+
+\subsubsection{Time segments within the year}
+\label{BGS-S-ST(SSSTTT)}
+
+The simulated  year  may be subdivided into time segments (S,T),
+cf. \BMS .
+
+The seasons (e.g. months of the year, or summer/winter) in the
+data structure are given as SET SSS and the seasons  simulated
+are given in SET S(SSS), both located in the file SETS.INC.
+
+The subdivision of the seasons (e.g., 4-hours intervals)  are
+given in the data structure by  SET TTT and the ones simulated
+are given in SET T(TTT), both located in the file SETS.INC.
+
+Change S(SSS) and T(TTT) to contain two labels each, rerun the
+model and study the consequences.
+
+
+You may experiment with various selections of time segments by
+changing the definitions of S(SSS) and T(TTT). Observe how the
+solution and the solution time depend on this. You will probably
+find that the number of time segments per year is a crucial
+determinant for the results as well as for the solution time.
+Intuitively, one would prefer many time segments to obtain more
+accuracy, however, this implies a more heavy computational burden.
+
+This is one of the reasons why the model has been constructed
+with a flexible subdivision of the year. For any problem to be
+analysed the determination of the necessary and sufficient number
+of time segments of the year is part of the problem.
+
+You end this section by defining the sets S(SSS) and T(TTT) to
+contain only one or two elements  each.
+
+
+\subsubsection{The full model}
+\label{BGS-SS-Fullmodel}
+
+The model installed  was a small version where e.g. only one
+country, one year and one time segment per year are represented.
+In the previous sections some of this has been illustrated, and
+it has been explained how to extend the model.
+
+A list of the main intended limitations in the supplied model is
+given below along with an indication of how they are implemented,
+and hence what should be changed in order to  eliminate them.
+ \begin{itemize}
+ \item Only one country: SET C(CCC), cf. Section  \ref{BGS-S-C(CCC)}.
+ \item One time segment per year: SET T(TTT) and SET S(SSS), cf.
+    Section  \ref{BGS-S-ST(SSSTTT)}.
+ \item Only one year: SET Y(YYY), cf. Section  \ref{BGS-S-Y(YYY)}.
+ \item Limited output: files PRINT1.INC,   PRINT2.INC,   PRINT3.INC,   PRINT4.INC,
+   cf. Section \ref{BGS-S-Output} and Section \ref{BGS-S-Display}.
+ \item No investments in new production capacity: consult \BMS .
+ \item No investments in  new transmission capacity: consult \BMS .
+%  \item ...: consult \BMS .
+%  \item ...: consult \BMS .
+%  \item ...: consult \BMS .
+ \end{itemize}
+
+ %!!!ZZZ!!!
+%At this stage you should consult \BMS  which also provides a
+%description of how the model may be further modified.
+
+
+
+
+
+\subsubsection{Print files}
+\label{BGS-S-Output}
+
+The output observed above was produced by instructions written
+specifically for the Balmorel model. Typically, one file of
+output was produced by one file containing the printing
+specifications. These files are located in the subdirectory
+ %!!!ZZZ!!!
+ PRINTINC and have the extension '.INC'. The file PRINT4.INC
+specifies which files that are selected.
+
+In PRINT4.INC you may comment in some more print files (provided
+of course that they exist and are properly located,  defined and
+specified, note in particular PRINT1.INC). Comment in two or
+three more files, run the model and observe the new files in the
+subdirectory
+ %!!!ZZZ!!!
+PRINTOUT. Open them and study the contents.
+
+
+Observe that you computer may have a limit on the number of files
+that may be open at the same time. Therefore be careful not to
+use too may print files in the same simulation. If you encountered
+no problems with this, so far, you may proceed, otherwise make a
+smaller selection of print files that you want to have open by
+commenting out those that are not necessary. Alternatively you
+may change the setting of the computer.
+
+
+See Section \ref{BGS-S-Display} for more on output.
+
+
+\subsubsection{Designing and controlling the output}
+\label{BGS-S-Display}
+
+The output facilities described in Section \ref{BGS-S-Output}
+were prepared specifically for the Balmorel model. Although there
+are many print files, you will probably soon like to have more
+simulation output. You may get this by copying and modifying the
+print files to suit your purpose.
+
+The mentioned print files rely on the PUT command.  You may also
+use the DISPLAY command which you may find more easy to use. This
+produces output to the file Balmorel.lst.
+
+Place the statement
+ %!!!ZZZ!!!
+ "DISPLAY 'My Own Choice: ', Y, C, G, DE, VGE\_T.L , 'End My Own
+Choice' ;" at the very end of the file Balmorel.gms. Run the
+model and find  the result in Balmorel.lst (near the end of the
+file).
+
+Various options control the type, amount and format of the output
+in the file Balmorel.lst. A short description is given in the
+first approximate 60 lines of the file
+ %!!!ZZZ!!!
+ Balmorel.gms.  See further the GAMS User's Manual (Section
+\ref{BGS-S-GAMS}).
+
+
+\section{Using Excel Interface}
+\label{BGS-S-Excel}
+
+The description in Section \ref{BGS-S-Running(text)} was based on
+working with the text file version of the model.
+
+However, it is also possible to work with an Excel interface
+ %!!!ZZZ!!!
+(presently under development).
+ %!!!ZZZ!!!
+ Basically, this consists of two parts, an input part containing
+the model and additional material, and an output part providing
+graphs based on some of the output files.
+
+The advantage of using a spreadsheet environment like Excel as
+interface is that it provides convenient facilities for
+preparation of input. In  few cases the input to a model can be
+taken directly from data sources, in  most cases it must in some
+way be manipulated. Some kinds of such manipulation may
+conveniently be done in a spreadsheet environment. Further,
+through  graphical presentation and otherwise, easy overview and
+control of the input is possible. Similarly the output may
+advantageously be presented and further processed in a spreadsheet
+environment. Some Excel spreadsheet facilities are provided for
+this purpose.
+
+The text files described in Section \ref{BGS-S-Running(text)}
+serve as intermediate files. Thus, it will always be possible to
+observe directly in those files the input to and output from
+simulation.
+
+Since the Excel user interface is under construction it will no
+be explained here.
+
+
+\subsection{The input system}
+
+Awaiting description.
+ %(You may try to find an Excel spreadsheet in the directory Data-pre-inc.)
+
+\subsection{The output system}
+Awaiting description.
+%  (You may try to find an Excel spreadsheet in the directory Printout.)
+
+
+
+\section{And then}
+
+The present document provides a basic introduction on how to get
+started. To proceed, you will will have to experiment yourself.
+You may benefit from studying other documents mentioned in Section
+\ref{BGS-S-Introduction},
+ %!!!ZZZ!!!
+ in particular \BMS.
+
+In case of serious problems you may contact us, see
+www.Balmorel.com for contact address.
+
+Any comments to this document or any other aspects related to
+Balmorel are welcome.
+
+
+\end{document}
